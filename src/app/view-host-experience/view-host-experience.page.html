@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ViewHostExperience</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let exp of listOfExperiences" (click)="selectExp(exp)">
+      <ion-col size="2"><ion-thumbnail><img src="https://i.imgur.com/2hocHvd.jpg"></ion-thumbnail></ion-col>
+      <ion-col size="3">{{exp.title}}</ion-col>
+      <ion-col size="3">{{exp.address}}</ion-col>
+    </ion-row>
+  </ion-grid>
+<!-- <ion-list>
+  <ion-item *ngFor="let exp of listOfExperiences" (click)="selectExp(exp)"><ion-thumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"></ion-thumbnail> {{exp.title}}</ion-item>
+</ion-list> -->
+</ion-content>

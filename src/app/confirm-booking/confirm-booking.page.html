@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ConfirmBooking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Total Price</ion-label>
+      {{price}}
+    </ion-item>
+    <ion-item>
+      <ion-label>Experience Title</ion-label>
+      {{title}}
+    </ion-item>
+    <ion-button (click)="confirm()">Let's go</ion-button>
+  </ion-list>
+</ion-content>

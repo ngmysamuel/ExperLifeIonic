@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Your Experience</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input [(ngModel)]="title" >Title</ion-input>
+  <ion-input [(ngModel)]="address" >Address</ion-input>
+  <ion-select placeholder="Category" [(ngModel)]="category">
+    <ion-select-option *ngFor="let cat of categoryLs" value="{{cat.categoryId}}">{{cat.name}}</ion-select-option>
+  </ion-select>
+  <ion-select placeholder="Type" [(ngModel)]="type">
+    <ion-select-option *ngFor="let cat of typeLs" value="{{cat.typeId}}">{{cat.name}}</ion-select-option>
+  </ion-select>
+  <ion-select placeholder="Location" [(ngModel)]="location">
+    <ion-select-option *ngFor="let cat of locationLs" value="{{cat.locationId}}">{{cat.name}}</ion-select-option>
+  </ion-select>
+  <ion-select placeholder="Language" [(ngModel)]="language">
+    <ion-select-option *ngFor="let cat of languageLs" value="{{cat.languageId}}">{{cat.name}}</ion-select-option>
+  </ion-select>
+  <ion-button (click)="createExperience()">Submit</ion-button>
+  <br/>
+  <ion-label style="color:red;">{{errorMessage}}</ion-label>
+</ion-content>

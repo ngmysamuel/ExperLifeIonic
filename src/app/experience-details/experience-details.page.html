@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ExperienceDetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label><b>Title</b></ion-label>
+      {{exp?.title}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Address</b></ion-label>
+      {{exp?.address}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Category</b></ion-label>
+      {{exp?.category.name}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Type</b></ion-label>
+      {{exp?.type.name}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Location</b></ion-label>
+      {{exp?.location.name}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Language</b></ion-label>
+      {{exp?.language.name}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Host Name</b></ion-label>
+      {{host}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Select a date: </b></ion-label>
+      <ion-select [(ngModel)]="selectedDateId" (ngModelChange)="updatePrice()">
+        <ion-select-option *ngFor="let e of experienceDatesAvail" value="{{e.experienceDateId}}">{{e.startDate}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Price($)</b></ion-label>
+      <ion-label>{{price}}</ion-label>
+    </ion-item>
+    <ion-item style="color:red;">
+      {{errorMessage}}
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item [disabled] = "!(exp && isItYours())">
+          <ion-button (click)="navigateToUpdate()">Update</ion-button>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item [disabled] = "!(exp && isItYours())">
+          <ion-button (click)="presentAlertConfirm()">Delete</ion-button>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item [disabled] = "!(exp && isItYours())">
+          <ion-button (click)="createExperienceDate()">Create Exp Date</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item [disabled] = "exp && isItYours()">
+          <ion-button (click)="presentAlertConfirm2()">Book</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<!-- problem here is that the *ngIf is not waiting for it to retrieve the experience first before its statement executes -->
