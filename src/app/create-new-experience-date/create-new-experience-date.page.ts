@@ -28,7 +28,7 @@ export class CreateNewExperienceDatePage implements OnInit {
       response=>{this.experience = response.experienceEntity;console.log(this.experience);},
       error=> {console.log("Error in getting details")}
     );
-    this.startDate = new Date().toISOString();
+    // this.startDate = new Date().toISOString();
   }
 
   create(){

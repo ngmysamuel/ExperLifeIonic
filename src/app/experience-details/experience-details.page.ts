@@ -59,7 +59,7 @@ export class ExperienceDetailsPage implements OnInit {
     }
     let e = {'price':this.price, 'experienceId':this.id};
     this.sessionService.setJsonObject(e);
-    this.router.navigate(['/confirm-booking']);
+    this.router.navigate(['/confirm-booking/'+this.selectedDateId]);
   }
 
   updatePrice(){

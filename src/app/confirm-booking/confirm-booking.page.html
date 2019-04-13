@@ -1,19 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ConfirmBooking</ion-title>
+    <ion-title>Booking Confirmation</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label>Total Price</ion-label>
-      {{price}}
-    </ion-item>
-    <ion-item>
       <ion-label>Experience Title</ion-label>
       {{title}}
     </ion-item>
-    <ion-button (click)="confirm()">Let's go</ion-button>
+    <ion-item>
+      <ion-label>Number of People</ion-label>
+      <ion-input style="text-align:end;" min="1" type="number" [(ngModel)]="numOfPeople" (ngModelChange)="updateTotalPrice()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price </ion-label>
+      $ {{price}}
+    </ion-item>
+    <ion-item>
+      <ion-label>Total Price</ion-label>
+      $ {{totalPrice}}
+    </ion-item>
   </ion-list>
+      <ion-button style="margin-top:20px" expand="block" (click)="confirm()">Confirm Booking</ion-button>
 </ion-content>
