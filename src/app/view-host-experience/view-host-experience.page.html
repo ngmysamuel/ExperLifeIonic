@@ -1,15 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ViewHostExperience</ion-title>
+    <ion-title>Host Experience</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row *ngFor="let exp of listOfExperiences" (click)="selectExp(exp)">
+    <ion-row *ngFor="let exp of listOfExperiences" (click)="selectExp(exp)" class="ion-align-items-center">
       <ion-col size="2"><ion-thumbnail><img src="https://i.imgur.com/2hocHvd.jpg"></ion-thumbnail></ion-col>
-      <ion-col size="3">{{exp.title}}</ion-col>
-      <ion-col size="3">{{exp.address}}</ion-col>
+      <ion-col size="9">
+        <ion-grid>
+          <ion-row>
+            <ion-col><b>{{exp.title}}</b></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>{{exp.address}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col>
+          <ion-icon name="arrow-forward"></ion-icon>
+      </ion-col>
     </ion-row>
   </ion-grid>
 <!-- <ion-list>
