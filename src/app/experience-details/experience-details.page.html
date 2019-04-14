@@ -53,7 +53,7 @@
           <ion-button expand="block" (click)="presentActionSheet()">Actions</ion-button>
       </div>
       <div *ngIf="!(exp && isItYours())">
-          <ion-button expand="block" (click)="presentAlertConfirm2()">Book</ion-button>
+          <ion-button expand="block" (click)="book()">Book</ion-button>
       </div>
 </ion-content>
 <!-- problem here is that the *ngIf is not waiting for it to retrieve the experience first before its statement executes -->

@@ -7,6 +7,7 @@ import {ExperienceDateService} from '../experience-date.service';
 import {Experience} from '../experience';
 import {Booking} from '../booking';
 import { ExperienceDate } from '../experience-date';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-confirm-booking',
@@ -24,7 +25,7 @@ export class ConfirmBookingPage implements OnInit {
   title: string
   booking: Booking;
 
-  constructor(private sessionService: SessionService,private experienceService: ExperienceService, private router:Router,private bookingService: BookingService, private activatedRoute: ActivatedRoute, private experienceDateService: ExperienceDateService) {
+  constructor(private sessionService: SessionService,private alertController: AlertController, private experienceService: ExperienceService, private router:Router,private bookingService: BookingService, private activatedRoute: ActivatedRoute, private experienceDateService: ExperienceDateService) {
     this.experienceDateId = parseInt(this.activatedRoute.snapshot.paramMap.get('expDateId'));
   }
 
@@ -52,6 +53,29 @@ export class ConfirmBookingPage implements OnInit {
 
   updateTotalPrice(){
     this.totalPrice = this.price*this.numOfPeople;
+  }
+
+  async presentAlertConfirm2() {
+    const alert = await this.alertController.create({
+      header: 'Confirm Booking?',
+      message: 'Do you want to <strong>book</strong> this?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Book',
+          handler: () => {
+            this.confirm();
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }

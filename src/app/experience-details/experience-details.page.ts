@@ -52,7 +52,7 @@ export class ExperienceDetailsPage implements OnInit {
         icon: 'trash',
         handler: () => {
           console.log('Delete clicked');
-          this.delete();
+          this.presentAlertConfirm();
         }
       }, {
         text: 'Update',
