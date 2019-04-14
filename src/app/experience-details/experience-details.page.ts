@@ -8,6 +8,7 @@ import {SessionService} from '../session.service'
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { AlertController } from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-experience-details',
@@ -29,7 +30,7 @@ export class ExperienceDetailsPage implements OnInit {
 
   errorMessage: string;
 
-  constructor(private userService: UserService, private experienceService: ExperienceService, private activatedRoute: ActivatedRoute, private router: Router, private sessionService: SessionService, private alertController: AlertController, private experienceDateService:ExperienceDateService) {
+  constructor(private userService: UserService, private experienceService: ExperienceService, private activatedRoute: ActivatedRoute, private router: Router, private sessionService: SessionService, private alertController: AlertController, private experienceDateService:ExperienceDateService, public actionSheetController: ActionSheetController) {
     this.isLoaded = false;
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.experienceService.retrieveExperienceDetails(this.id).subscribe(
@@ -40,6 +41,44 @@ export class ExperienceDetailsPage implements OnInit {
       response=>{this.experienceDatesAvail = response.experienceDateEntities},
       error=>{}
     )
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Host Actions',
+      buttons: [{
+        text: 'Delete',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+          this.delete();
+        }
+      }, {
+        text: 'Update',
+        icon: 'settings',
+        handler: () => {
+          console.log('Share clicked');
+          this.navigateToUpdate();
+        }
+      }, {
+        text: 'Create Experience Date',
+        icon: 'arrow-dropright-circle',
+        handler: () => {
+          console.log('Play clicked');
+          this.createExperienceDate();
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+          actionSheet.dismiss();
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
   ngOnInit() {
