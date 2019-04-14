@@ -29,6 +29,10 @@ export class AppComponent {
       title: 'View Host Experience',
       url:'/view-host-experience',
       // icon: 'view'
+    },
+    {
+      title: 'View Your Bookings',
+      url:'/view-booking',
     }
   ];
 

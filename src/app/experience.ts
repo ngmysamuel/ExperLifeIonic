@@ -14,6 +14,7 @@ export class Experience {
   language: Language;
   host: User;
   experienceId: number;
+  active: boolean;
 
   price: number;
   experienceDates: Array<ExperienceDate> = [];

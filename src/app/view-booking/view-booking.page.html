@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ViewBooking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let book of listOfBookings">
+      <ion-col>
+        img
+      </ion-col>
+      <ion-col>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              {{book.experienceDate.experience.title}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              {{book.experienceDate.startDate}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col>
+        ${{book.totalPrice}} for {{book.numberOfPeople}} people
+      </ion-col>
+    </ion-item>
+  </ion-list>
+</ion-content>

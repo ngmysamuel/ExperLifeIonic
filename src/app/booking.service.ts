@@ -24,16 +24,25 @@ export class BookingService {
   constructor(private httpClient: HttpClient, private sessionService: SessionService) { }
 
   createBooking(booking: Booking, experienceDateId: number): Observable<any> {
+		console.log("Booking service creating booking withe expDateId: "+experienceDateId);
     this.currentUser = this.sessionService.getCurrentUser();
-    let createBookingReq = 
-      {'guestId': this.currentUser.userId, 
-      'experienceDateId': experienceDateId, 
+    let createBookingReq =
+      {'guestId': this.currentUser.userId,
+      'experienceDateId': experienceDateId,
       'booking': booking}
     return this.httpClient.put<any>(this.baseUrl+"/createBooking", createBookingReq, httpOptions).pipe
     (
       catchError(this.handleError)
     )
   }
+
+	getAllBookingsByGuestId(id: number): Observable<any> {
+		console.log("Getting all bookings by: "+id);
+		return this.httpClient.get<any>(this.baseUrl+"/getAllBookingsByGuestId/"+id).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
 
   private handleError(error: HttpErrorResponse)
 	{

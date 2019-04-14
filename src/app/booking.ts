@@ -10,7 +10,7 @@ export class Booking{
     numberOfPeople: number;
     totalPrice: number;
     status: string;
-    experienceDate: number;
+    experienceDate: ExperienceDate;
 
     constructor(){}
 
@@ -26,7 +26,7 @@ export class Booking{
     setTotalPrice(u:number){
         this.totalPrice=u;
     }
-    setExperienceDate(u:number){
+    setExperienceDate(u:ExperienceDate){
         this.experienceDate=u;
     }
 }

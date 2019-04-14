@@ -45,11 +45,9 @@ export class ConfirmBookingPage implements OnInit {
     booking.setTotalPrice(this.totalPrice);
     booking.setNumberOfPeople(this.numOfPeople);
     this.bookingService.createBooking(booking, this.experienceDateId).subscribe(
-      response=>{},
+      response=>{this.router.navigate(['home']);},
       error=>{console.log("Error in confirming booking!")}
     )
-
-    this.router.navigate(['home']);
   }
 
   updateTotalPrice(){
