@@ -4,7 +4,7 @@ import {ExperienceDate} from './experience-date';
 
 export class Booking{
 
-    user: User
+    guest: User
     bookingId: number;
     bookingDate: Date;
     numberOfPeople: number;
@@ -14,8 +14,8 @@ export class Booking{
 
     constructor(){}
 
-    setUser(u:User){
-        this.user=u;
+    setGuest(u:User){
+        this.guest=u;
     }
     setBookingDate(u:Date){
         this.bookingDate=u;

@@ -38,6 +38,14 @@ export class ExperienceDateService {
 	}
 
 
+	retrieveExperienceDatesByExperienceId(id: number): Observable<any> {
+		return this.httpClient.get<any>(this.baseUrl+"/retrieveExperienceDates/"+id).pipe
+		(
+			catchError(this.handleError)
+		);
+	}
+
+
 
 
   private handleError(error: HttpErrorResponse)

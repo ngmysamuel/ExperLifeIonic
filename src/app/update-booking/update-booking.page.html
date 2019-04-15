@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>UpdateBooking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label><b>Status</b> (Please delete Booking on the previous page to change the status)</ion-label>
+      {{booking?.status}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Current Date</b></ion-label>
+      {{booking?.experienceDate.startDate}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Current Price($)</b></ion-label>
+      {{booking?.totalPrice}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Number Of People</b></ion-label>
+      <ion-input [(ngModel)]="numberOfPeople" (ionChange)="updateTotalPrice($event)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Select a date: </b></ion-label>
+      <ion-select  (ionChange)="updateUnitPrice($event)">
+        <ion-select-option *ngFor="let e of experienceDatesAvail" value="{{e.experienceDateId}}">{{e.startDate}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Unit Price($)</b></ion-label>
+      {{unitPrice}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>New Total Price($)</b></ion-label>
+      {{totalPrice}}
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="update()"> Submit
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <br/>
+  <br/>
+  <br/>
+  <div style="color:red;">
+    {{errorMessage}}
+  </div>
+</ion-content>

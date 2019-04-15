@@ -36,6 +36,29 @@ export class BookingService {
     )
   }
 
+	updateBooking(booking: Booking, experienceDateId: number): Observable<any> {
+		console.log("Booking service updating booking withe expDateId: "+experienceDateId);
+		this.currentUser = this.sessionService.getCurrentUser();
+		let createBookingReq =
+      {'guestId': this.currentUser.userId,
+      'experienceDateId': experienceDateId,
+      'booking': booking};
+			return this.httpClient.post<any>(this.baseUrl+"/updateBooking", createBookingReq, httpOptions).pipe
+	    (
+	      catchError(this.handleError)
+	    )
+	}
+
+	deleteBooking
+
+	getBookingById(id: number) {
+		console.log("getting booking of id: "+id);
+		return this.httpClient.get<any>(this.baseUrl+"/getBookingById/"+id).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
+
 	getAllBookingsByGuestId(id: number): Observable<any> {
 		console.log("Getting all bookings by: "+id);
 		return this.httpClient.get<any>(this.baseUrl+"/getAllBookingsByGuestId/"+id).pipe

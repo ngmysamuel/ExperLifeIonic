@@ -24,6 +24,8 @@ export class ConfirmBookingPage implements OnInit {
   title: string
   booking: Booking;
 
+  errorMessage: string;
+
   constructor(private sessionService: SessionService,private experienceService: ExperienceService, private router:Router,private bookingService: BookingService, private activatedRoute: ActivatedRoute, private experienceDateService: ExperienceDateService) {
     this.experienceDateId = parseInt(this.activatedRoute.snapshot.paramMap.get('expDateId'));
   }
@@ -46,7 +48,7 @@ export class ConfirmBookingPage implements OnInit {
     booking.setNumberOfPeople(this.numOfPeople);
     this.bookingService.createBooking(booking, this.experienceDateId).subscribe(
       response=>{this.router.navigate(['home']);},
-      error=>{console.log("Error in confirming booking!")}
+      error=>{console.log("Error in confirming booking!");this.errorMessage=error;}
     )
   }
 

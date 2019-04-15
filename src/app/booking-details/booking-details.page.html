@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>BookingDetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label><b>Number of People </b></ion-label>
+      {{booking?.numberOfPeople}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Booked By</b></ion-label>
+      {{booking?.guest.username}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Booking ID</b></ion-label>
+      {{booking?.bookingId}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Date of Experience</b></ion-label>
+      {{booking?.experienceDate.startDate}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Booking Date</b></ion-label>
+      {{booking?.bookingDate}}
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Booking Price</b></ion-label>
+      {{booking?.totalPrice}}
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="presentActionSheet()">Action</ion-button>
+</ion-content>
