@@ -35,10 +35,10 @@
       <ion-label><b>Language</b></ion-label>
       {{exp?.language.name}}
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label><b>Host Name</b></ion-label>
       {{host}}
-    </ion-item>
+    </ion-item> -->
     <ion-item *ngIf="!(exp && isItYours())">
       <ion-label><b>Select a date: </b></ion-label>
       <ion-select [(ngModel)]="selectedDateId" (ngModelChange)="updatePrice()">

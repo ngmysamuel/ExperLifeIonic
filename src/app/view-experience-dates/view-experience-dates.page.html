@@ -21,7 +21,21 @@
         </ion-card-title>
       </ion-card-header>
       <ion-item>
-        <ion-label>$ {{ed.price}}</ion-label>
+        <ion-icon name="pricetag"></ion-icon>
+        <ion-label><b>${{ed.price}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-icon name="people"></ion-icon>
+        <ion-label><b>{{ed.capacity - ed.spotsAvailable}}</b> person booked</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-icon name="clipboard"></ion-icon>
+        <ion-label><b>{{ed.spotsAvailable}}</b> slots left</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="presentDeleteExpDate(ed.experienceDateId)" color='danger' slot="end">
+            <ion-icon name="trash"></ion-icon>Delete
+        </ion-button>
       </ion-item>
     </ion-card>
 </ion-content>

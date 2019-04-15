@@ -20,7 +20,7 @@ export class ViewExperienceDatesPage implements OnInit {
   exp: Experience;
   experienceDates: Array<ExperienceDate> = [];
 
-  constructor(private experienceDateService:ExperienceDateService, private activatedRoute: ActivatedRoute, private experienceService: ExperienceService, private router: Router) {
+  constructor(private experienceDateService:ExperienceDateService, private activatedRoute: ActivatedRoute, private experienceService: ExperienceService, private router: Router, private alertController: AlertController) {
     this.experienceId = parseInt(this.activatedRoute.snapshot.paramMap.get("id"));
     this.experienceService.retrieveExperienceDetails(this.experienceId).subscribe(
       response=>{this.exp = response.experienceEntity;console.log(this.exp);},
@@ -37,6 +37,42 @@ export class ViewExperienceDatesPage implements OnInit {
 
   createExperienceDate(){
     this.router.navigate(['create-new-experience-date/'+ this.experienceId]);
+  }
+
+  async presentDeleteExpDate(experienceDateId: number){
+    const alert = await this.alertController.create({
+      header: 'Delete Experience Date',
+      message: 'Do you want to delete this experience date? Any related bookings will be cancelled!',
+      inputs: [
+        {
+          name:'Reason',
+          type: 'text',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Delete',
+          handler: data => {
+            this.deleteExpDate(experienceDateId, data.Reason);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  deleteExpDate(experienceDateId: number, reason: String){
+    this.experienceDateService.deleteExperienceDate(experienceDateId, reason).subscribe(
+      response=>{console.log("Experience Date " + experienceDateId + " deleted!");},
+      error=>{console.log("Fail deleting exp date");}
+    );
   }
 
 }

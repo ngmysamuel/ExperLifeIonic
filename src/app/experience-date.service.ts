@@ -37,6 +37,15 @@ export class ExperienceDateService {
 		);
 	}
 
+	deleteExperienceDate(expDateId: number, reason: String):Observable<any> {
+		console.log("The id of the date is: "+expDateId);
+		
+		return this.httpClient.delete<any>(this.baseUrl+"/DeleteExperienceDate?experienceDateId="+expDateId+"&reason="+reason).pipe
+		(
+			catchError(this.handleError)
+		);
+	}
+
 
 
 
