@@ -1,24 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>CreateNewExperienceDate</ion-title>
+    <ion-title>Create New Experience Date</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item>
-       <ion-label>Start Date</ion-label>
-      <ion-datetime display-format="DD MMMM YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="startDate"></ion-datetime>
+       <ion-label><b>Start Date</b></ion-label>
+      <ion-datetime display-format="DD MMMM YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="startDate" required></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-input [(ngModel)]="price" >Price</ion-input>
+        <ion-label><b>Price</b></ion-label>
+      <ion-input type="number" min='0'step="0.01" style="text-align: right;" [(ngModel)]="price" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input [(ngModel)]="capacity" >Capacity</ion-input>
+        <ion-label><b>Capacity</b></ion-label>
+      <ion-input type='number' style="text-align: right;" min='0' [(ngModel)]="capacity" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input [(ngModel)]="spotsAvailable" >spotsAvailable</ion-input>
+        <ion-label><b>Spots Available</b></ion-label>
+      <ion-input type='number' min='0' style="text-align: right;" [(ngModel)]="spotsAvailable" required></ion-input>
     </ion-item>
-    <ion-button (click)="create()">Submit</ion-button>
   </ion-list>
+  <ion-button expand="block" (click)="create()">Submit</ion-button>
 </ion-content>

@@ -34,13 +34,13 @@
       <ion-label><b>Host Name</b></ion-label>
       {{host}}
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="!(exp && isItYours())">
       <ion-label><b>Select a date: </b></ion-label>
       <ion-select [(ngModel)]="selectedDateId" (ngModelChange)="updatePrice()">
         <ion-select-option *ngFor="let e of experienceDatesAvail" value="{{e.experienceDateId}}">{{e.startDate}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="!(exp && isItYours())">
       <ion-label><b>Price($)</b></ion-label>
       <ion-label>{{price}}</ion-label>
     </ion-item>
@@ -49,23 +49,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngIf="(exp && isItYours())">
-          <ion-button (click)="navigateToUpdate()">Update</ion-button>
-      </ion-col>
-      <ion-col *ngIf="(exp && isItYours())">
-          <ion-button (click)="presentAlertConfirm()">Delete</ion-button>
-      </ion-col>
-      <ion-col *ngIf="(exp && isItYours())">
-          <ion-button (click)="createExperienceDate()">Create Exp Date</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col *ngIf="!(exp && isItYours())">
+      <div *ngIf="(exp && isItYours() && exp.active)">
+          <ion-button expand="block" (click)="presentActionSheet()">Actions</ion-button>
+      </div>
+      <div *ngIf="!(exp && isItYours())">
           <ion-button expand="block" (click)="presentAlertConfirm2()">Book</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      </div>
 </ion-content>
 <!-- problem here is that the *ngIf is not waiting for it to retrieve the experience first before its statement executes -->

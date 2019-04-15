@@ -1,41 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>UpdateExperience</ion-title>
+    <ion-title>Update Experience</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item>
-      <b>Title: </b>
-      <ion-input [(ngModel)]="title"></ion-input>
+      <ion-label><b>Title</b></ion-label>
+      <ion-input style="text-align: right;" [(ngModel)]="title" required></ion-input>
     </ion-item>
     <ion-item>
-      <b>Address: </b>
-      <ion-input [(ngModel)]="address"></ion-input>
+      <ion-label><b>Address</b></ion-label>
+      <ion-input style="text-align: right;" [(ngModel)]="address" required></ion-input>
     </ion-item>
     <ion-item>
+        <ion-label><b>Category</b></ion-label>
       <ion-select placeholder="Category" [(ngModel)]="category">
         <ion-select-option *ngFor="let cat of categoryLs" value="{{cat.categoryId}}">{{cat.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
+        <ion-label><b>Type</b></ion-label>
       <ion-select placeholder="Type" [(ngModel)]="type">
         <ion-select-option *ngFor="let cat of typeLs" value="{{cat.typeId}}">{{cat.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
+        <ion-label><b>Location</b></ion-label>
       <ion-select placeholder="Location" [(ngModel)]="location">
         <ion-select-option *ngFor="let cat of locationLs" value="{{cat.locationId}}">{{cat.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
+        <ion-label><b>Language</b></ion-label>
       <ion-select placeholder="Language" [(ngModel)]="language">
         <ion-select-option *ngFor="let cat of languageLs" value="{{cat.languageId}}">{{cat.name}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-button (click)="updateExp()">Update</ion-button>
-    </ion-item>
   </ion-list>
+  <ion-button expand="block" (click)="updateExp()">Update</ion-button>
 </ion-content>
