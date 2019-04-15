@@ -42,7 +42,7 @@ export class ViewExperienceDatesPage implements OnInit {
   async presentDeleteExpDate(experienceDateId: number){
     const alert = await this.alertController.create({
       header: 'Delete Experience Date',
-      message: 'Do you want to delete this experience date? Any related bookings will be cancelled!',
+      message: 'Do you want to delete this experience date? Any related bookings will be cancelled. Please enter your cancellation reason below!',
       inputs: [
         {
           name:'Reason',
