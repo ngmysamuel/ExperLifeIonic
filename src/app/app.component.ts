@@ -18,7 +18,7 @@ export class AppComponent {
     {
       title: 'Search Experiences',
       url: '/lista',
-      icon: 'list'
+      icon: 'search'
     },
     {
       title: 'Create Your Experience!',
@@ -28,11 +28,12 @@ export class AppComponent {
     {
       title: 'View Host Experience',
       url:'/view-host-experience',
-      // icon: 'view'
+      icon: 'list'
     },
     {
       title: 'View Your Bookings',
       url:'/view-booking',
+      icon: 'list'
     }
   ];
 

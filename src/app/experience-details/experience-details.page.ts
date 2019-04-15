@@ -56,17 +56,24 @@ export class ExperienceDetailsPage implements OnInit {
         }
       }, {
         text: 'Update',
-        icon: 'settings',
+        icon: 'create',
         handler: () => {
           console.log('Share clicked');
           this.navigateToUpdate();
         }
       }, {
         text: 'Create Experience Date',
-        icon: 'arrow-dropright-circle',
+        icon: 'add-circle',
         handler: () => {
-          console.log('Play clicked');
+          console.log('Create Ed clicked');
           this.createExperienceDate();
+        }
+      }, {
+        text: 'View Experience Dates',
+        icon: 'list',
+        handler: () => {
+          console.log('View ED clicked');
+          this.router.navigate(['view-experience-dates/'+this.exp.experienceId]);
         }
       }, {
         text: 'Cancel',

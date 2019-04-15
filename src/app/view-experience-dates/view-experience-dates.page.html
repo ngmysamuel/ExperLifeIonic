@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>View Experience Dates</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="createExperienceDate()">
+          <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 style="padding-left:15px">{{exp?.title}}</h1>
+    <ion-card *ngFor="let ed of experienceDates">
+      <ion-card-header style="padding-top:8px; padding-bottom: 4px; padding-left: 0px;">
+        <ion-card-title style="text-align:left; height: 35px;">
+          <ion-datetime display-format="DDDD, D MMMM YYYY" value="{{ed.startDate}}"></ion-datetime>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label>$ {{ed.price}}</ion-label>
+      </ion-item>
+    </ion-card>
+</ion-content>

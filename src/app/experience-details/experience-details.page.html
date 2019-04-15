@@ -1,15 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Experience Details</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <h1 style="padding-left: 15px; margin-bottom: 5px;">{{exp?.title}}</h1>
+  <h6 style="padding-left: 15px; color:grey; margin-top: 0px;">by {{host}}</h6>
   <ion-list>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label><b>Title</b></ion-label>
       {{exp?.title}}
-    </ion-item>
+    </ion-item> -->
     <ion-item>
       <ion-label><b>Address</b></ion-label>
       {{exp?.address}}
