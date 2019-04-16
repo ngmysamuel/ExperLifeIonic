@@ -30,6 +30,15 @@ export class ExperienceService {
 		);
 	}
 
+	filterExperienceByDate(ls:Array<Experience>, date: Date): Observable<any> {
+		console.log("in experience.service filterByDate with date: "+date);
+		let obj = {'listToFilterFrom':ls, 'date':date};
+		return this.httpClient.post<any>(this.baseUrl+'/filterByDate',obj,httpOptions).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
+
 
   createExperience(experience: Experience): Observable<any> {
 		console.log("3rd");
@@ -68,6 +77,7 @@ export class ExperienceService {
 	}
 
 	retrieveAllExperiences(): Observable<any> {
+		console.log("In experience.service retrievingAllExp()");
 		return this.httpClient.get<any>(this.baseUrl+"/retrieveAllExperiences").pipe
 		(
 			catchError(this.handleError)

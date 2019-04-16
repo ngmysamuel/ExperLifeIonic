@@ -10,19 +10,36 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of filteredItems" (click)="selectExp(item)">
-      <ion-item detail>
-        <ion-label>{{item.title}}</ion-label>
-      </ion-item>
-        
-      <!-- <ion-item-options side="end">
-        <ion-item-option (click)="bookExp(item)">Book</ion-item-option>
-      </ion-item-options> -->
-      
-    </ion-item-sliding>
-  </ion-list>
+    <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
+
+    <ion-datetime display-format="DD MMMM YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="date" (ionChange)="updateFilteredItems()">Date</ion-datetime>
+
+    <ion-select placeholder="Select Category" [(ngModel)]="category" (ionChange)="filterMore()">
+      <ion-select-option value="undef">Select Category</ion-select-option>
+      <ion-select-option *ngFor="let cat of categoryLs" value="{{cat.categoryId}}">{{cat.name}}</ion-select-option>
+    </ion-select>
+    <ion-select placeholder="Select Type" [(ngModel)]="type" (ionChange)="filterMore()">
+      <ion-select-option value="undef">Select Type  </ion-select-option>
+      <ion-select-option *ngFor="let type of typeLs" value="{{type.typeId}}">{{type.name}}</ion-select-option>
+    </ion-select>
+    <ion-select placeholder="Select Language" [(ngModel)]="language" (ionChange)="filterMore()">
+      <ion-select-option value="undef">Select Language</ion-select-option>
+      <ion-select-option *ngFor="let language of languageLs" value="{{language.languageId}}">{{language.name}}</ion-select-option>
+    </ion-select>
+    <ion-select placeholder="Select Location" [(ngModel)]="location" (ionChange)="filterMore()">
+      <ion-select-option value="undef">Select Location</ion-select-option>
+      <ion-select-option *ngFor="let location of locationLs" value="{{location.locationId}}">{{location.name}}</ion-select-option>
+    </ion-select>
+
+    <ion-button (click)="clearSelection()">Clear Filters</ion-button>
+  <ion-card *ngFor="let item of filteredItems" (click)="selectExp(item)">
+    <ion-card-header>
+      <ion-card-subtitle>{{item.category.name}}</ion-card-subtitle>
+      <ion-card-title>{{item.title}}</ion-card-title>
+      From ${{item.averagePrice}}
+    </ion-card-header>
+    <!-- <ion-item slot="end"></ion-item> -->
+  </ion-card>
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>
