@@ -44,6 +44,18 @@ export class BookingService {
 		)
 	}
 
+	getBookingById(id: number): Observable<any> {
+		return this.httpClient.get<any>(this.baseUrl+"/getBookingById/"+id).pipe(
+			catchError(this.handleError)
+		)
+	}
+
+	retrieveAllBookingsByExperienceDateId(id: number):Observable<any> {
+		return this.httpClient.get<any>(this.baseUrl+"/retrieveAllBookingsByExperienceDateId/"+id).pipe(
+			 catchError(this.handleError)
+		)
+	}
+
   private handleError(error: HttpErrorResponse)
 	{
 		let errorMessage: string = "";

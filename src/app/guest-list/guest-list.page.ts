@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ExperienceDateService } from "../experience-date.service";
+import { BookingService } from "../booking.service";
 import { User } from "../user";
 import {Router, ActivatedRoute} from '@angular/router';
+import { Booking } from '../booking';
+import { EvaluationService } from '../evaluation.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-guest-list',
@@ -10,19 +13,23 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class GuestListPage implements OnInit {
 
-  guests: Array<User> = [];
+  bookings: Array<Booking> = [];
   experienceDateId: number;
 
-  constructor(private experienceDateService: ExperienceDateService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private bookingService:BookingService, private router: Router, private activatedRoute: ActivatedRoute, private evaluationService:EvaluationService, private alertController:AlertController) {
     this.experienceDateId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.experienceDateService.retrieveExperienceDateGuests(this.experienceDateId).subscribe(
-      response=>{this.guests = response.users; console.log("Retrieval success");},
+    this.bookingService.retrieveAllBookingsByExperienceDateId(this.experienceDateId).subscribe(
+      response=>{this.bookings = response.ls; console.log("Retrieval success");},
       error=>{console.log("error in retrieving guests");}
     )
    }
 
   ngOnInit() {
     
+  }
+
+  evaluateGuest(guestId: number,bookingId:number){
+    this.router.navigate(['/evaluate-guest/'+bookingId+"/"+guestId]);
   }
 
 }
