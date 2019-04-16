@@ -1,18 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu side="end">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Filter Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
 
-<ion-content>
-    <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
-
-    <ion-datetime display-format="DD MMMM YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="date" (ionChange)="updateFilteredItems()">Date</ion-datetime>
+    <ion-datetime placeholder="Select Date" display-format="DD MMMM YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="date" (ionChange)="updateFilteredItems()">Date</ion-datetime>
 
     <ion-select placeholder="Select Category" [(ngModel)]="category" (ionChange)="filterMore()">
       <ion-select-option value="undef">Select Category</ion-select-option>
@@ -32,6 +26,36 @@
     </ion-select>
 
     <ion-button (click)="clearSelection()">Clear Filters</ion-button>
+
+  </ion-content>
+</ion-menu><ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>
+
+
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-searchbar placeholder="eg. Fun Cooking Time" (ionInput)="onInput($event)"></ion-searchbar>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="open()">Filter</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   <ion-card *ngFor="let item of filteredItems" (click)="selectExp(item)">
     <ion-card-header>
       <ion-card-subtitle>{{item.category.name}}</ion-card-subtitle>

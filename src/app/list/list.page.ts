@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ExperienceService} from '../experience.service';
 import {Experience} from '../experience';
 import {Router} from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 import {Category} from '../category';
 import {CategoryService} from '../category.service';
@@ -38,7 +39,8 @@ export class ListPage implements OnInit {
   languageLs: Language[];
 
   constructor(private router: Router,private experienceService: ExperienceService,private categoryService: CategoryService,
-              private typeService: TypeService, private locationService: LocationService, private languageService: LanguageService) {
+              private typeService: TypeService, private locationService: LocationService, private languageService: LanguageService,
+              private menu: MenuController) {
   }
 
   ngOnInit() {
@@ -62,6 +64,10 @@ export class ListPage implements OnInit {
       response=>{this.languageLs = response.ls},
       error=>{}
     );
+  }
+
+  open(){
+    this.menu.open('end');
   }
 
   onInput(event: any) {
