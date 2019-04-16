@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Experience Details</ion-title>
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="follow()">
+        <ion-icon name="star" *ngIf="!(exp && isItYours())"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

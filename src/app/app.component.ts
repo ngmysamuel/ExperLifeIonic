@@ -34,6 +34,11 @@ export class AppComponent {
       title: 'View Your Bookings',
       url:'/view-booking',
       icon: 'list'
+    },
+    {
+      title: 'View Favorite Experiences',
+      url:'/view-favorite-experience',
+      icon: 'list'
     }
   ];
 
