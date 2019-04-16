@@ -33,4 +33,12 @@ export class ViewHostExperiencePage implements OnInit {
     );
   }
 
+  isActive(active: boolean){
+    console.log(active);
+    if(active){
+      return 'white';
+    }
+    return '#c1bfbf';
+  }
+
 }

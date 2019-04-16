@@ -27,8 +27,8 @@
       </ion-col>
     </ion-row>
   </ion-grid> -->
-  <ion-card *ngFor="let exp of listOfExperiences" (click)="selectExp(exp)">
-    <ion-card-header style="padding-bottom: 4px;">
+  <ion-card *ngFor="let exp of listOfExperiences" (click)="selectExp(exp)" [ngStyle]="{'background-color': isActive(exp.active)}">
+    <ion-card-header style="padding-bottom: 4px;" >
       <ion-card-title style="text-align:left;">{{exp.title}}</ion-card-title>
     </ion-card-header>
     <ion-item>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Guest List</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let g of guests">
+      <ion-label>{{g.firstName}} {{g.lastName}}</ion-label>
+      <!-- <ion-label slot="end" style="text-align: end; vertical-align: center;">
+        <ion-grid>
+          <ion-row style="align-items:center;">
+            <ion-col> <ion-icon name="star"></ion-icon></ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label> -->
+    </ion-item>
+  </ion-list>
+</ion-content>

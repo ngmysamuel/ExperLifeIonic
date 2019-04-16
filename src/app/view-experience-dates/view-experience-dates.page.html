@@ -33,6 +33,9 @@
         <ion-label><b>{{ed.spotsAvailable}}</b> slots left</ion-label>
       </ion-item>
       <ion-item>
+        <ion-button (click)="viewGuest(ed.experienceDateId)" slot="end">
+          Guest List
+        </ion-button>
         <ion-button (click)="presentDeleteExpDate(ed.experienceDateId)" color='danger' slot="end">
             <ion-icon name="trash"></ion-icon>Delete
         </ion-button>

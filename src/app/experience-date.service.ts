@@ -46,6 +46,12 @@ export class ExperienceDateService {
 		);
 	}
 
+	retrieveExperienceDateGuests(expDateId:number){
+		return this.httpClient.get<any>(this.baseUrl+"/RetrieveExperienceDateGuestsById/"+expDateId).pipe(
+			catchError(this.handleError)
+		);
+	}
+
 
 
 

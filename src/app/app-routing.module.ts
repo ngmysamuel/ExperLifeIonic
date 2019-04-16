@@ -27,7 +27,9 @@ const routes: Routes = [
   { path: 'create-new-experience-date/:id', loadChildren: './create-new-experience-date/create-new-experience-date.module#CreateNewExperienceDatePageModule' },
   { path: 'confirm-booking/:expDateId', loadChildren: './confirm-booking/confirm-booking.module#ConfirmBookingPageModule' },
   { path: 'view-booking', loadChildren: './view-booking/view-booking.module#ViewBookingPageModule' },
-  { path: 'view-experience-dates/:id', loadChildren: './view-experience-dates/view-experience-dates.module#ViewExperienceDatesPageModule' }
+  { path: 'view-experience-dates/:id', loadChildren: './view-experience-dates/view-experience-dates.module#ViewExperienceDatesPageModule' },
+  { path: 'guest-list/:id', loadChildren: './guest-list/guest-list.module#GuestListPageModule' }
+
 
 ];
 
