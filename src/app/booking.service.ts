@@ -49,7 +49,6 @@ export class BookingService {
 	    )
 	}
 
-	deleteBooking
 
 	getBookingById(id: number) {
 		console.log("getting booking of id: "+id);
