@@ -48,7 +48,7 @@ export class ConfirmBookingPage implements OnInit {
     booking.setNumberOfPeople(this.numOfPeople);
     this.bookingService.createBooking(booking, this.experienceDateId).subscribe(
       response=>{this.router.navigate(['home']);},
-      error=>{console.log("Error in confirming booking!");this.errorMessage=error;}
+      error=>{console.log("Error in confirming booking!"); this.presentAlertBookingUnsuccessful(error);}
     )
   }
 
@@ -76,6 +76,16 @@ export class ConfirmBookingPage implements OnInit {
         }
       ]
     });
+    await alert.present();
+  }
+
+  async presentAlertBookingUnsuccessful(errorMessage) {
+    const alert = await this.alertController.create({
+      header: "Booking Unsuccessful!",
+      message: errorMessage,
+      buttons: ['OK']
+    });
+
     await alert.present();
   }
 

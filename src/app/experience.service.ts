@@ -84,6 +84,25 @@ export class ExperienceService {
 		);
 	}
 
+	retrieveAllFavoriteExperiences(): Observable<any> {
+		return this.httpClient.get<any>(this.baseUrl+"/retrieveFavoriteExperiences?userId="+this.sessionService.getCurrentUser().userId).pipe
+		(
+			catchError(this.handleError)
+		);
+	}
+
+	followExperience(experienceId: number): Observable<any> {
+		return this.httpClient.post<any>(this.baseUrl+"/followExperience?experienceId="+experienceId+"&userId="+this.sessionService.getCurrentUser().userId, null, httpOptions).pipe(
+			catchError(this.handleError)
+		);
+	}
+
+	unfollowExperience(experienceId: number): Observable<any> {
+		return this.httpClient.post<any>(this.baseUrl+"/unfollowExperience?experienceId="+experienceId+"&userId="+this.sessionService.getCurrentUser().userId, null, httpOptions).pipe(
+			catchError(this.handleError)
+		);
+	}
+
 
 	private handleError(error: HttpErrorResponse)
 	{

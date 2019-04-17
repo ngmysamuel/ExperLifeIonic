@@ -27,7 +27,7 @@ export class RegisterNewUserPage implements OnInit {
   register(){
     let u = new User(this.username, this.password, this.firstName, this.lastName, this.email);
     this.userService.register(u).subscribe(
-      response=>{this.sessionService.setCurrentUser(response.user);this.sessionService.setIsLoggedIn(true);console.log(this.sessionService.getCurrentUser().username);this.router.navigate(['home/'+this.sessionService.getCurrentUser().username]);},
+      response=>{this.sessionService.setCurrentUser(response.user);this.sessionService.setIsLoggedIn(true);console.log(this.sessionService.getCurrentUser().username);this.router.navigate(['']);},
       error=>{console.log("ERROR IN REGISTERING User")}
     );
   }

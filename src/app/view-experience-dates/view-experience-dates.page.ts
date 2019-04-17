@@ -75,4 +75,8 @@ export class ViewExperienceDatesPage implements OnInit {
     );
   }
 
+  viewGuest(experienceDateId: number){
+    this.router.navigate(['guest-list/'+experienceDateId]);
+  }
+
 }

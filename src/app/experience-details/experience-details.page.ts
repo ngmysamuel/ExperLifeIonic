@@ -118,6 +118,13 @@ export class ExperienceDetailsPage implements OnInit {
     }
   }
 
+  follow(){
+    this.experienceService.followExperience(this.id).subscribe(
+      response=>{console.log("Follow success");},
+      error=>{console.log(error);}
+    )
+  }
+
   delete(){
     this.experienceService.deleteExperience(this.id).subscribe(
       response=>{this.router.navigate(['/view-host-experience']);},

@@ -17,7 +17,7 @@
     <ion-card *ngFor="let ed of experienceDates">
       <ion-card-header style="padding-top:8px; padding-bottom: 4px; padding-left: 0px;">
         <ion-card-title style="text-align:left; height: 35px;">
-          <ion-datetime display-format="DDDD, D MMMM YYYY" value="{{ed.startDate}}"></ion-datetime>
+          <ion-datetime display-format="DDDD, D MMMM YYYY" value="{{ed.startDate}}" disabled></ion-datetime>
         </ion-card-title>
       </ion-card-header>
       <ion-item>
@@ -33,6 +33,9 @@
         <ion-label><b>{{ed.spotsAvailable}}</b> slots left</ion-label>
       </ion-item>
       <ion-item>
+        <ion-button (click)="viewGuest(ed.experienceDateId)" slot="end">
+          Guest List
+        </ion-button>
         <ion-button (click)="presentDeleteExpDate(ed.experienceDateId)" color='danger' slot="end">
             <ion-icon name="trash"></ion-icon>Delete
         </ion-button>
