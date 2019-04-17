@@ -34,6 +34,11 @@ export class AppComponent {
       title: 'View Your Bookings',
       url:'/view-booking',
       icon: 'list'
+    },
+    {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'body'
     }
   ];
 

@@ -18,23 +18,38 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+	updateUser(user: User):Observable<any> {
+		console.log("in user.service updating userId: "+user.userId+" with birthdate: "+user.birthDate);
+		let user2 = {'userEntity':user}
+		return this.httpClient.post<any>(this.baseUrl+"/updateUser", user2, httpOptions).pipe
+		(
+			catchError(this.handleError)
+		);
+	}
+
   login(username: string, password:string): Observable<any> {
 		console.log("in user service");
     return this.httpClient.get<any>(this.baseUrl+"/login?username="+username+"&password="+password).pipe
-    (catchError(this.handleError));
+    (
+			catchError(this.handleError)
+		);
   }
 
 	register(userEntity: User): Observable<any> {
 		console.log("in user service. username: "+userEntity.username);
 		let user2 = {'userEntity': userEntity};
 		return this.httpClient.put<any>(this.baseUrl+"/register", user2, httpOptions).pipe
-    (catchError(this.handleError));
+    (
+			catchError(this.handleError)
+		);
 	}
 
 	getUser(id: number):Observable<any> {
 		console.log("in user service. id: "+id);
 		return this.httpClient.get<any>(this.baseUrl+"/getUser/"+id).pipe
-    (catchError(this.handleError));
+    (
+			catchError(this.handleError)
+		);
 	}
 
   private handleError(error: HttpErrorResponse) {
