@@ -14,8 +14,10 @@ export class AuthGuardService implements CanActivate {
 		console.log('********** AuthGuard: ' + route.url[0].path);
 		if(this.sessionService.isLoggedIn()) {
 			return true;
-		} else { 
+		} else {
+      console.log("is not logged in 1st");
       this.router.navigate(['/accessRightError']);
+      console.log("is not logged in 2nd");
 			return false;
 		}
 	}
