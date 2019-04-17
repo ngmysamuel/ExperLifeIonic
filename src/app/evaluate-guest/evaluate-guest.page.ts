@@ -30,7 +30,7 @@ export class EvaluateGuestPage implements OnInit {
   evaluate(){
     this.evaluationService.createEvaluation(this.score,this.remark,this.bookingId,this.userId).subscribe(
       response=>{console.log("Creation success"); this.location.back();},
-      error=>{console.log("error in retrieving guests");}
+      error=>{console.log("error in evaluating");}
     )
   }
 

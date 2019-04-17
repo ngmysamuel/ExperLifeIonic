@@ -48,11 +48,11 @@ export class EvaluationService {
       'remark': remark,
       'date': new Date(Date.now())
     }
-		return this.httpClient.put<any>(this.baseUrl+"/createEvalFromGuest",createNewEval,httpOptions).pipe
-		(
-			catchError(this.handleError)
-		)
-	}
+    return this.httpClient.put<any>(this.baseUrl+"/createEvalFromGuest", createNewEval, httpOptions).pipe
+    (
+      catchError(this.handleError)
+    )
+  }
 
   private handleError(error: HttpErrorResponse)
 	{

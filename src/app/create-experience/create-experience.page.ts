@@ -9,7 +9,7 @@ import {Location} from '../location';
 import {LocationService} from '../location.service';
 import {Language} from '../language';
 import {LanguageService} from '../language.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-experience',
@@ -74,7 +74,7 @@ export class CreateExperiencePage implements OnInit {
     console.log("2nd");
     // console.log(this.exp.category.name);
     this.experienceService.createExperience(this.exp).subscribe(
-      response=>{console.log("returned from creating");this.errorMessage="Experience Created!";this.router.navigate(['/lista'])},
+      response=>{console.log("returned from creating");this.errorMessage="Experience Created!"; this.router.navigate(['/view-host-experience'])},
       error=>{this.errorMessage = error; console.log(error+"DDDDDDD");}
     );
   }

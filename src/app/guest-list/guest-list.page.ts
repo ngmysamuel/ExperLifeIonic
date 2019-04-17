@@ -17,15 +17,19 @@ export class GuestListPage implements OnInit {
   experienceDateId: number;
 
   constructor(private bookingService:BookingService, private router: Router, private activatedRoute: ActivatedRoute, private evaluationService:EvaluationService, private alertController:AlertController) {
+    
+   }
+
+  ngOnInit() {
+    
+  }
+
+  ionViewWillEnter(){
     this.experienceDateId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.bookingService.retrieveAllBookingsByExperienceDateId(this.experienceDateId).subscribe(
       response=>{this.bookings = response.ls; console.log("Retrieval success");},
       error=>{console.log("error in retrieving guests");}
     )
-   }
-
-  ngOnInit() {
-    
   }
 
   evaluateGuest(guestId: number,bookingId:number){
