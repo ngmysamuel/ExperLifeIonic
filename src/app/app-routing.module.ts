@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'experience-details/:id', loadChildren: './experience-details/experience-details.module#ExperienceDetailsPageModule',canActivate: [AuthGuardService] },
   { path: 'update-experience/:id', loadChildren: './update-experience/update-experience.module#UpdateExperiencePageModule',canActivate: [AuthGuardService] },
   { path: 'accessRightError', loadChildren: './access-right-error/access-right-error.module#AccessRightErrorPageModule'},
-  { path: 'register-new-user', loadChildren: './register-new-user/register-new-user.module#RegisterNewUserPageModule' ,canActivate: [AuthGuardService] },
+  { path: 'register-new-user', loadChildren: './register-new-user/register-new-user.module#RegisterNewUserPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'home/:username', loadChildren: './home/home.module#HomePageModule'},
   { path: 'create-new-experience-date/:id', loadChildren: './create-new-experience-date/create-new-experience-date.module#CreateNewExperienceDatePageModule',canActivate: [AuthGuardService]  },

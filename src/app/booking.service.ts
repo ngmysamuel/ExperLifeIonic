@@ -36,6 +36,16 @@ export class BookingService {
     )
   }
 
+	cancelBooking(id: Number) {
+		console.log("Booking.service cancelBooking with bookingId: "+id);
+		let userid = this.sessionService.getCurrentUser().userId;
+		let cancelBooking = {'bookingId': id, 'userId': userid};
+		return this.httpClient.post<any>(this.baseUrl+"/cancelBooking",cancelBooking,httpOptions).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
+
 	updateBooking(booking: Booking, experienceDateId: number): Observable<any> {
 		console.log("Booking service updating booking withe expDateId: "+experienceDateId);
 		this.currentUser = this.sessionService.getCurrentUser();
