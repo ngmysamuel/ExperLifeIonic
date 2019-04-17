@@ -114,6 +114,19 @@
       </ion-col>
     </ion-row>
 
+    <ion-row style="border-bottom:antiquewhite solid">
+      <ion-col size="3">
+        <ion-label>Premium</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label *ngIf="premium">You are our valued Premium member.</ion-label>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button *ngIf="premium" (click)="downgrade()">Stop Premium</ion-button>
+        <ion-button *ngIf="!premium" (click)="upgrade()">Upgrade</ion-button>
+      </ion-col>
+    </ion-row>
+
     <ion-button (click)="update()">Submit</ion-button>
 
   </ion-grid>

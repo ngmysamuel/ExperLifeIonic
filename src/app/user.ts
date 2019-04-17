@@ -9,7 +9,8 @@ export class User {
   selfIntro: string;
   phoneNumber: string;
   gender: string;
-  birthday: Date
+  birthday: Date;
+  premium: boolean;
   userId: number;
 
   constructor(username:string,password: string,firstName: string,lastName: string,email: string) {
