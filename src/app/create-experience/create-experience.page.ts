@@ -33,8 +33,8 @@ export class CreateExperiencePage implements OnInit {
   locationLs: Location[];
   languageLs: Language[];
 
-  constructor(private experienceService: ExperienceService, private categoryService: CategoryService,
-              private typeService: TypeService, private locationService: LocationService, private languageService: LanguageService, private router: Router) { }
+  constructor(private experienceService: ExperienceService, private categoryService: CategoryService,private router: Router,
+              private typeService: TypeService, private locationService: LocationService, private languageService: LanguageService) { }
 
   ngOnInit() {
     this.categoryService.retrieveAllCategories().subscribe(

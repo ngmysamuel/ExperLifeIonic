@@ -24,6 +24,35 @@ export class BookingDetailsPage implements OnInit {
     )
   }
 
+  async presentAlertConfirm2() {
+    const alert = await this.alertController.create({
+      header: 'Confirm Delete?',
+      message: 'Do you want to <strong>delete</strong> this?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Cancel Booking',
+          handler: () => {
+            this.bookingService.cancelBooking(this.booking.bookingId).subscribe(
+              response=>{this.router.navigate(['/home']);},
+              error=>{console.log(error);}
+            )
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Action',
@@ -51,30 +80,6 @@ export class BookingDetailsPage implements OnInit {
       }]
     });
     await actionSheet.present();
-  }
-
-  async presentAlertConfirm2() {
-    const alert = await this.alertController.create({
-      header: 'Confirm Delete?',
-      message: 'Do you want to <strong>delete</strong> this?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Delete (backend is not implemented)',
-          handler: () => {
-            console.log("Backend is not implemented yet")
-          }
-        }
-      ]
-    });
-
-    await alert.present();
   }
 
 }
