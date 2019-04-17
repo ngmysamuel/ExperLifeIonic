@@ -37,6 +37,21 @@ export class EvaluationService {
     )
   }
 
+  createEvaluationFromGuest(score: number, remark: String, bookingId: number, userId: number){
+    let createNewEval =
+    {
+      'bookingId': bookingId,
+      'userId': userId,
+      'score': score,
+      'remark': remark,
+      'date': new Date(Date.now())
+    }
+    return this.httpClient.put<any>(this.baseUrl+"/createEvalFromGuest", createNewEval, httpOptions).pipe
+    (
+      catchError(this.handleError)
+    )
+  }
+
   private handleError(error: HttpErrorResponse)
 	{
 		let errorMessage: string = "";

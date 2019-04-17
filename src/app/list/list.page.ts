@@ -43,7 +43,11 @@ export class ListPage implements OnInit {
               private menu: MenuController) {
   }
 
-  ngOnInit() {
+  ngOnInit(){
+    
+  }
+
+  ionViewWillEnter() {
     this.experienceService.retrieveAllExperiences().subscribe(
       response=>{this.items = response.experienceEntities;this.filteredItems = this.items;this.dateFilteredItems=this.items},
       error=>{console.log("error in initialiseItems")}

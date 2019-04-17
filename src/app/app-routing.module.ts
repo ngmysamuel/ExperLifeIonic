@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'experience-details/:id', loadChildren: './experience-details/experience-details.module#ExperienceDetailsPageModule',canActivate: [AuthGuardService] },
   { path: 'update-experience/:id', loadChildren: './update-experience/update-experience.module#UpdateExperiencePageModule',canActivate: [AuthGuardService] },
   { path: 'accessRightError', loadChildren: './access-right-error/access-right-error.module#AccessRightErrorPageModule'},
-  { path: 'register-new-user', loadChildren: './register-new-user/register-new-user.module#RegisterNewUserPageModule' ,canActivate: [AuthGuardService] },
+  { path: 'register-new-user', loadChildren: './register-new-user/register-new-user.module#RegisterNewUserPageModule'},
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'home/:username', loadChildren: './home/home.module#HomePageModule'},
   { path: 'create-new-experience-date/:id', loadChildren: './create-new-experience-date/create-new-experience-date.module#CreateNewExperienceDatePageModule',canActivate: [AuthGuardService]  },
@@ -33,7 +33,9 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule',canActivate: [AuthGuardService]  },
   { path: 'guest-list/:id', loadChildren: './guest-list/guest-list.module#GuestListPageModule',canActivate: [AuthGuardService]  },
   { path: 'evaluate-guest/:bookingId/:guestId', loadChildren: './evaluate-guest/evaluate-guest.module#EvaluateGuestPageModule',canActivate: [AuthGuardService]  },
-  { path: 'view-favorite-experience', loadChildren: './view-favorite-experience/view-favorite-experience.module#ViewFavoriteExperiencePageModule',canActivate: [AuthGuardService]  }
+  { path: 'view-favorite-experience', loadChildren: './view-favorite-experience/view-favorite-experience.module#ViewFavoriteExperiencePageModule',canActivate: [AuthGuardService]  },
+  { path: 'evaluate-experience/:bookingId', loadChildren: './evaluate-experience/evaluate-experience.module#EvaluateExperiencePageModule' }
+
 
 ];
 

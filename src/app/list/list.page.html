@@ -47,12 +47,12 @@
 <ion-content>
 
     <ion-grid>
-      <ion-row>
+      <ion-row align-items-center>
         <ion-col size="9">
           <ion-searchbar placeholder="eg. Fun Cooking Time" (ionInput)="onInput($event)"></ion-searchbar>
         </ion-col>
         <ion-col>
-          <ion-button (click)="open()">Filter</ion-button>
+          <ion-button color="dark" fill="clear" (click)="open()"><ion-icon name="options"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
