@@ -24,6 +24,10 @@ export class BookingDetailsPage implements OnInit {
     )
   }
 
+  rateBooking() {
+    this.router.navigate(['/evaluate-experience/'+this.booking.bookingId]);
+  }
+
   async presentAlertConfirm2() {
     const alert = await this.alertController.create({
       header: 'Confirm Delete?',
@@ -47,39 +51,8 @@ export class BookingDetailsPage implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
 
-
-
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Action',
-      buttons: [{
-        text: 'Delete Booking',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          console.log('Delete clicked');
-          this.presentAlertConfirm2();
-        }
-      }, {
-        text: 'Update Booking',
-        icon: 'create',
-        handler: () => {
-          this.router.navigate(['/update-booking/'+this.booking.bookingId]);
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
-    });
-    await actionSheet.present();
-  }
 
 }

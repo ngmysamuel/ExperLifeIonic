@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>BookingDetails</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -30,6 +33,11 @@
       <ion-label><b>Booking Price</b></ion-label>
       {{booking?.totalPrice}}
     </ion-item>
+    <ion-item>
+      <ion-label><b>Status</b></ion-label>
+      {{booking?.status}}
+    </ion-item>
   </ion-list>
   <ion-button expand="block" (click)="presentAlertConfirm2()">Cancel Booking</ion-button>
+  <ion-button expand="block" *ngIf="!booking?.hostEvaluated" (click)="rateBooking()">Rate Booking</ion-button>
 </ion-content>
