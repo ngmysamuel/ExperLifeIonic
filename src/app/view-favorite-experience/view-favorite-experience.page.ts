@@ -58,4 +58,14 @@ export class ViewFavoriteExperiencePage implements OnInit {
     this.router.navigate(['/experience-details/'+exp.experienceId]);
     console.log(exp.title);
   }
+
+  onInput(event: any) {
+    this.filteredItems = this.items;
+    var val = event.target.value;
+    if (val && val.trim() != '') {
+      this.filteredItems = this.items.filter((item) => {
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
 }

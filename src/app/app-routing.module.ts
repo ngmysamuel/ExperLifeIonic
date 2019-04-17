@@ -5,7 +5,7 @@ import { AuthGuardService } from './auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/lista',
     pathMatch: 'full'
   },
   {
@@ -29,7 +29,8 @@ const routes: Routes = [
   { path: 'view-booking', loadChildren: './view-booking/view-booking.module#ViewBookingPageModule' },
   { path: 'view-experience-dates/:id', loadChildren: './view-experience-dates/view-experience-dates.module#ViewExperienceDatesPageModule' },
   { path: 'guest-list/:id', loadChildren: './guest-list/guest-list.module#GuestListPageModule' },
-  { path: 'evaluate-guest/:bookingId/:guestId', loadChildren: './evaluate-guest/evaluate-guest.module#EvaluateGuestPageModule' },  { path: 'view-favorite-experience', loadChildren: './view-favorite-experience/view-favorite-experience.module#ViewFavoriteExperiencePageModule' }
+  { path: 'evaluate-guest/:bookingId/:guestId', loadChildren: './evaluate-guest/evaluate-guest.module#EvaluateGuestPageModule' },
+  { path: 'view-favorite-experience', loadChildren: './view-favorite-experience/view-favorite-experience.module#ViewFavoriteExperiencePageModule' }
 
 
 
