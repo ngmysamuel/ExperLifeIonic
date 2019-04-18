@@ -19,7 +19,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
 	updateUser(user: User):Observable<any> {
-		console.log("in user.service updating userId: "+user.userId);
+		console.log("in user.service updating userId: "+user.birthday);
 		let user2 = {'userEntity':user}
 		return this.httpClient.post<any>(this.baseUrl+"/updateUser", user2, httpOptions).pipe
 		(

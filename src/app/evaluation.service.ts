@@ -37,8 +37,10 @@ export class EvaluationService {
     )
   }
 
-  createEvaluationFromGuest(score: number, remark: String, bookingId: number, userId: number){
-    let createNewEval =
+	createEvaluateExperience(score: number, remark: String, bookingId: number):Observable<any> {
+		console.log("Creating evaluation for bookingId: "+bookingId);
+		let userId = this.sessionService.getCurrentUser().userId;
+		let createNewEval =
     {
       'bookingId': bookingId,
       'userId': userId,
