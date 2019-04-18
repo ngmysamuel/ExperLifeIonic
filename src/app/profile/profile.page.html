@@ -13,12 +13,12 @@
       <ion-col size="3">
         <ion-label>Username</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editUsername">{{user?.username}}</ion-label>
         <ion-input style="--padding-top:0;--background:lightgray;" *ngIf="editUsername" [(ngModel)]="username"></ion-input>
       </ion-col>
-      <ion-col size="3">
-        <ion-button style="--padding-top:0;" (click)="toggleEditUsername()" size="small"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button style="--padding-top:0;" (click)="toggleEditUsername()" size="small" color="dark" fill="clear"><ion-icon name="create"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
@@ -26,12 +26,12 @@
       <ion-col size="3">
         <ion-label>First Name</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editFirstName">{{user?.firstName}}</ion-label>
         <ion-input style="--padding-top:0;--background:lightgray;" *ngIf="editFirstName" [(ngModel)]="firstName"></ion-input>
       </ion-col>
-      <ion-col size="3">
-        <ion-button (click)="toggleEditFirstName()" size="small"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button (click)="toggleEditFirstName()" size="small" color="dark" fill="clear"><ion-icon name="create" ></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
@@ -39,12 +39,12 @@
       <ion-col size="3">
         <ion-label>Last Name</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editLastName">{{user?.lastName}}</ion-label>
         <ion-input style="--padding-top:0;--background:lightgray;" *ngIf="editLastName" [(ngModel)]="lastName"></ion-input>
       </ion-col>
-      <ion-col size="3">
-        <ion-button (click)="toggleEditLastName()" size="small"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button (click)="toggleEditLastName()" size="small" color="dark" fill="clear"><ion-icon name="create"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
@@ -52,12 +52,12 @@
       <ion-col size="3">
         <ion-label>Email</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editEmail">{{user?.email}}</ion-label>
         <ion-input style="--padding-top:0;--background:lightgray;" *ngIf="editEmail" [(ngModel)]="email"></ion-input>
       </ion-col>
-      <ion-col size="3">
-        <ion-button (click)="toggleEditEmail()" size="small"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button (click)="toggleEditEmail()" size="small" color="dark" fill="clear"><ion-icon name="create"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
@@ -65,12 +65,12 @@
       <ion-col size="3">
         <ion-label>Phone Number</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editPhoneNumber">{{user?.phoneNumber}}</ion-label>
         <ion-input style="--padding-top:0;--background:lightgray;" *ngIf="editPhoneNumber" [(ngModel)]="phoneNumber"></ion-input>
       </ion-col>
-      <ion-col size="3">
-        <ion-button (click)="toggleEditPhoneNumber()" size="small"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button (click)="toggleEditPhoneNumber()" size="small" color="dark" fill="clear"><ion-icon name="create"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
@@ -78,12 +78,12 @@
       <ion-col size="3">
         <ion-label>Self Description</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editSelfDescription">{{user?.selfIntro}}</ion-label>
         <ion-input style="--padding-top:0;--background:lightgray;" *ngIf="editSelfDescription" [(ngModel)]="selfDescription"></ion-input>
       </ion-col>
-      <ion-col size="3">
-        <ion-button (click)="toggleEditSelfDescription()" size="small"><ion-icon size="small" name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button (click)="toggleEditSelfDescription()" size="small" color="dark" fill="clear"><ion-icon size="small" name="create"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
@@ -91,15 +91,15 @@
       <ion-col size="3">
         <ion-label>Gender</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editGender">{{user?.gender}}</ion-label>
         <ion-select *ngIf="editGender" [(ngModel)]="gender">
           <ion-select-option value="Male">Male</ion-select-option>
           <ion-select-option value="Female">Female</ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="3">
-        <ion-button (click)="toggleEditGender()" size="small"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button (click)="toggleEditGender()" size="small" color="dark" fill="clear"><ion-icon name="create"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
@@ -107,29 +107,29 @@
       <ion-col size="3">
         <ion-label>Birth Date</ion-label>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="7">
         <ion-label *ngIf="!editBirthDate">{{user?.birthday}}</ion-label>
         <ion-datetime placeholder="Select Date" *ngIf="editBirthDate" display-format="DD MMMM YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="birthDate"></ion-datetime>
       </ion-col>
-      <ion-col size="3">
-        <ion-button (click)="toggleEditBirthDate()" size="small"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-col size="1">
+        <ion-button (click)="toggleEditBirthDate()" size="small" color="dark" fill="clear"><ion-icon name="create"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-row style="border-bottom:antiquewhite solid">
+    <ion-row style="border-bottom:antiquewhite solid" color="dark" fill="clear">
       <ion-col size="3">
         <ion-label>Premium</ion-label>
       </ion-col>
-      <ion-col size="6" *ngIf="premium">
+      <ion-col size="5">
         <ion-label *ngIf="premium">You are our valued Premium member.</ion-label>
       </ion-col>
-      <ion-col size="3">
-        <ion-button *ngIf="premium" (click)="downgrade()">Stop Premium</ion-button>
+      <ion-col size="1">
+        <ion-button *ngIf="premium" (click)="downgrade()">Downgrade</ion-button>
         <ion-button *ngIf="!premium" (click)="upgrade()">Upgrade</ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-button (click)="update()">Submit</ion-button>
+    <ion-button (click)="update()" expand="block">Submit</ion-button>
 
   </ion-grid>
 </ion-content>
