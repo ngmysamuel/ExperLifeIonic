@@ -10,6 +10,9 @@ import {LocationService} from '../location.service';
 import {Language} from '../language';
 import {LanguageService} from '../language.service';
 import { Router } from '@angular/router';
+import {GetLocationService} from '../get-location.service';
+import {SessionService} from '../session.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-experience',
@@ -33,8 +36,11 @@ export class CreateExperiencePage implements OnInit {
   locationLs: Location[];
   languageLs: Language[];
 
+  loading: any;
+
   constructor(private experienceService: ExperienceService, private categoryService: CategoryService,private router: Router,
-              private typeService: TypeService, private locationService: LocationService, private languageService: LanguageService) { }
+              private typeService: TypeService, private locationService: LocationService, private languageService: LanguageService,
+              private getLocationService:GetLocationService, private sessionService:SessionService, private loadingController: LoadingController) { }
 
   ngOnInit() {
     this.categoryService.retrieveAllCategories().subscribe(
@@ -53,6 +59,16 @@ export class CreateExperiencePage implements OnInit {
       response=>{this.languageLs = response.ls},
       error=>{}
     )
+  }
+
+  async getAddress() {
+    console.log("ADD pressed")
+    this.presentLoading();
+    await this.getLocationService.getPosition().
+    then((resp)=>{console.log("in 1st resp");console.log(resp.coords.latitude); return this.getLocationService.reverse(resp.coords.latitude, resp.coords.longitude);}).
+    then((result: any) => {console.log("in 2nd resp");this.getLocationService.marhshallString(result[0]);console.log("string marshalled");this.address = this.sessionService.getAddress();this.dismissLoading();}).
+    catch((error)=>{console.log(error);});
+    console.log("After await");
   }
 
   createExperience() {
@@ -77,6 +93,21 @@ export class CreateExperiencePage implements OnInit {
       response=>{console.log("returned from creating");this.errorMessage="Experience Created!"; this.router.navigate(['/view-host-experience'])},
       error=>{this.errorMessage = error; console.log(error+"DDDDDDD");}
     );
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Finding where you are...',
+      backdropDismiss: true
+    });
+    return await this.loading.present();
+  }
+
+  async dismissLoading() {
+    console.log("dimissLoading() called")
+    const { role, data } = await this.loading.dismiss();
+    console.log("Loading dismissed")
+    return;
   }
 
 }

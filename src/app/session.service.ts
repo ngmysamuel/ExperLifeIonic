@@ -36,5 +36,13 @@ export class SessionService {
     return JSON.parse(sessionStorage.jsonobj);
   }
 
+  setAddress(address: string) {
+    sessionStorage.address = address;
+  }
+
+  getAddress(): string {
+    return sessionStorage.address;
+  }
+
 
 }

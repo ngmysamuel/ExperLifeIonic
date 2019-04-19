@@ -16,10 +16,10 @@ const routes: Routes = [
     path: 'lista',
     loadChildren: './list/list.module#ListPageModule'
   },
-  { path: 'create-experience', loadChildren: './create-experience/create-experience.module#CreateExperiencePageModule', canActivate: [AuthGuardService]},
+  { path: 'create-experience', loadChildren: './create-experience/create-experience.module#CreateExperiencePageModule',canActivate: [AuthGuardService]},
   { path: 'view-host-experience', loadChildren: './view-host-experience/view-host-experience.module#ViewHostExperiencePageModule',canActivate: [AuthGuardService] },
   { path: 'experience-details/:id', loadChildren: './experience-details/experience-details.module#ExperienceDetailsPageModule',canActivate: [AuthGuardService] },
-  { path: 'update-experience/:id', loadChildren: './update-experience/update-experience.module#UpdateExperiencePageModule',canActivate: [AuthGuardService] },
+  { path: 'update-experience/:id', loadChildren: './update-experience/update-experience.module#UpdateExperiencePageModule',canActivate: [AuthGuardService]},
   { path: 'accessRightError', loadChildren: './access-right-error/access-right-error.module#AccessRightErrorPageModule'},
   { path: 'register-new-user', loadChildren: './register-new-user/register-new-user.module#RegisterNewUserPageModule'},
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'evaluate-guest/:bookingId/:guestId', loadChildren: './evaluate-guest/evaluate-guest.module#EvaluateGuestPageModule',canActivate: [AuthGuardService]  },
   { path: 'view-favorite-experience', loadChildren: './view-favorite-experience/view-favorite-experience.module#ViewFavoriteExperiencePageModule',canActivate: [AuthGuardService]  },
   { path: 'evaluate-experience/:id', loadChildren: './evaluate-experience/evaluate-experience.module#EvaluateExperiencePageModule' }
+
 
 
 ];

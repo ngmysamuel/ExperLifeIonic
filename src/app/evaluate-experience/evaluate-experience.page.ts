@@ -20,6 +20,7 @@ export class EvaluateExperiencePage implements OnInit {
     this.bookingId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
   }
 
+
   submit() {
     console.log("ts: "+this.bookingId);
     this.evaluationService.createEvaluateExperience(this.score, this.remark, this.bookingId).subscribe(
@@ -27,5 +28,4 @@ export class EvaluateExperiencePage implements OnInit {
       error=>{console.log(error)}
     )
   }
-
 }
