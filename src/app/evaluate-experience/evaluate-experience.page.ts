@@ -26,17 +26,12 @@ export class EvaluateExperiencePage implements OnInit {
   ngOnInit() {
   }
 
-  evaluate(){
-    this.evaluationService.createEvaluationFromGuest(this.score,this.remark,this.bookingId,this.userId).subscribe(
-      response=>{console.log("Creation success"); this.location.back();},
-      error=>{console.log("error in evaluation");}
-    )
-  }
-  
+
   submit() {
     console.log("ts: "+this.bookingId);
     this.evaluationService.createEvaluateExperience(this.score, this.remark, this.bookingId).subscribe(
       response=>{this.router.navigate(['view-booking'])},
       error=>{console.log(error)}
-
+    )
+  }
 }
