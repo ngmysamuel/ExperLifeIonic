@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <!-- <ion-list>
     <ion-item *ngFor="let book of listOfBookings" (click)="viewDetails(book)" detail>
       <ion-col>
         <ion-grid>
@@ -33,8 +33,25 @@
         ${{book.totalPrice}} for {{book.numberOfPeople}} person(s)
       </ion-col>
     </ion-item>
-    <ion-item>
-      {{book?.bookingId}}
-    </ion-item>
-  </ion-list>
+  </ion-list> -->
+
+  <ion-card *ngFor="let book of listOfBookings" (click)="viewDetails(book)">
+      <ion-card-header style="padding-top:8px; padding-bottom: 4px;">
+        <ion-card-title style="text-align:left;">
+            <ion-label>{{book.experienceDate.experience.title}}</ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-icon name="pricetag"></ion-icon>
+        <ion-label style="padding-left:10px"><b>${{book.totalPrice}}</b></ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-icon name="people"></ion-icon>
+        <ion-label style="padding-left:10px"><b>{{book.numberOfPeople}}</b> person(s)</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-icon name="calendar"></ion-icon>
+          <ion-datetime display-format="DDDD, D MMMM YYYY h:mm" style="--placeholder-color:black; color:black" disabled value="{{book.experienceDate.startDate}}"></ion-datetime>
+      </ion-item>
+    </ion-card>
 </ion-content>

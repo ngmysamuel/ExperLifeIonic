@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {SessionService} from '../session.service'
 import { User } from '../user';
 import { UserService } from '../user.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
 
 @Component({
@@ -30,7 +30,7 @@ export class ExperienceDetailsPage implements OnInit {
 
   errorMessage: string;
 
-  constructor(private userService: UserService, private experienceService: ExperienceService, private activatedRoute: ActivatedRoute, private router: Router, private sessionService: SessionService, private alertController: AlertController, private experienceDateService:ExperienceDateService, public actionSheetController: ActionSheetController) {
+  constructor(private userService: UserService, private experienceService: ExperienceService, private activatedRoute: ActivatedRoute, private router: Router, private sessionService: SessionService, private alertController: AlertController, private experienceDateService:ExperienceDateService, public actionSheetController: ActionSheetController, private toastController:ToastController) {
     this.isLoaded = false;
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.experienceService.retrieveExperienceDetails(this.id).subscribe(
@@ -120,7 +120,7 @@ export class ExperienceDetailsPage implements OnInit {
 
   follow(){
     this.experienceService.followExperience(this.id).subscribe(
-      response=>{console.log("Follow success");},
+      response=>{console.log("Follow success"); this.presentFollow();},
       error=>{console.log(error);}
     )
   }
@@ -196,4 +196,12 @@ export class ExperienceDetailsPage implements OnInit {
     await alert.present();
   }
 
+
+  async presentFollow() {
+    const toast = await this.toastController.create({
+      message: 'Experience Followed.',
+      duration: 2000
+    });
+    toast.present();
+  }
 }
