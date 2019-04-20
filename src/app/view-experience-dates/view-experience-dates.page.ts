@@ -31,13 +31,6 @@ export class ViewExperienceDatesPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
-    this.experienceDateService.retrieveExperienceDates(this.experienceId).subscribe(
-      response=>{this.experienceDates = response.experienceDateEntities;console.log("experience dates retrieved")},
-      error=>{}
-    )
-  }
-
   ionViewWillEnter(){
     this.experienceId = parseInt(this.activatedRoute.snapshot.paramMap.get("id"));
     this.experienceService.retrieveExperienceDetails(this.experienceId).subscribe(
