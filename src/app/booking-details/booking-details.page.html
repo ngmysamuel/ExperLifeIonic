@@ -38,6 +38,6 @@
       {{booking?.status}}
     </ion-item>
   </ion-list>
-  <ion-button expand="block" (click)="presentAlertConfirm2()">Cancel Booking</ion-button>
-  <ion-button expand="block" *ngIf="!booking?.hostEvaluated" (click)="rateBooking()">Rate Booking</ion-button>
+  <ion-button expand="block" *ngIf="booking?.status != 'CANCELLED'" (click)="presentAlertConfirm2()">Cancel Booking</ion-button>
+  <ion-button expand="block" *ngIf="!booking?.hostEvaluated && booking?.status != 'CANCELLED'" (click)="rateBooking()">Rate Booking</ion-button>
 </ion-content>
