@@ -52,6 +52,20 @@ export class UserService {
 		);
 	}
 
+	follow(userId: number, followId:number){
+		return this.httpClient.post<any>(this.baseUrl+"/followUser?userId="+userId+"&followId="+followId, null, httpOptions).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
+
+	unfollow(userId: number, unfollowId:number){
+		return this.httpClient.post<any>(this.baseUrl+"/followUser?userId="+userId+"&unfollowId="+unfollowId, null, httpOptions).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
+
   private handleError(error: HttpErrorResponse) {
   		let errorMessage: string = "";
   		if (error.error instanceof ErrorEvent) {
