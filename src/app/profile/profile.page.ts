@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {SessionService} from '../session.service';
 import {User} from '../user';
 import {UserService} from '../user.service';
+import {AppealService} from '../appeal.service';
+
 import {Router} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -23,6 +25,7 @@ export class ProfilePage implements OnInit {
   premium: boolean;
 
   user: User;
+  submitUpgradeAppeal: boolean;
 
   editUsername: boolean;
   editFirstName: boolean;
@@ -34,7 +37,7 @@ export class ProfilePage implements OnInit {
   editBirthDate: boolean;
 
   constructor(private sessionService: SessionService, private userService:UserService, private router: Router,
-              private alertController: AlertController) { }
+              private alertController: AlertController, private appealService:AppealService) { }
 
   ngOnInit() {
   }
@@ -58,6 +61,10 @@ export class ProfilePage implements OnInit {
     this.editSelfDescription = false;
     this.editGender = false;
     this.editBirthDate = false;
+    this.appealService.checkIfSubmittedAppeal(this.sessionService.getCurrentUser().userId).subscribe (
+      response=>{this.submitUpgradeAppeal = response},
+      error=>{}
+    )
   }
 
   toggleEditUsername() {
@@ -88,10 +95,6 @@ export class ProfilePage implements OnInit {
   upgrade(){
     this.presentAlertConfirm2();
   }
-  downgrade(){
-    this.presentAlertConfirm3();
-  }
-
 
   update(){
     this.user.username = this.username;
@@ -126,7 +129,18 @@ export class ProfilePage implements OnInit {
         }, {
           text: 'Upgrade!',
           handler: () => {
-            this.premium = true;
+            let obj =
+            {
+                'description':'Premium Appeal',
+                'appealDate': new Date(),
+                'user': this.sessionService.getCurrentUser(),
+                'type': 'PREMIUM',
+                'status':'SUBMIT',
+            }
+            this.appealService.createPremiumAppeal(obj).subscribe(
+              response=>{this.submitUpgradeAppeal = true;},
+              error=>{console.log(error)}
+            )
           }
         }
       ]
@@ -134,27 +148,6 @@ export class ProfilePage implements OnInit {
     await alert.present();
   }
 
-  async presentAlertConfirm3() {
-    const alert = await this.alertController.create({
-      header: 'Confirm downgrade?',
-      message: 'Do you want to <strong>downgrade</strong>?',
-      buttons: [
-        {
-          text: 'Oops',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Downgrade',
-          handler: () => {
-            this.premium = false;
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
+
 
 }

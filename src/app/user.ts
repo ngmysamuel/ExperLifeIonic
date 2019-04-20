@@ -12,6 +12,7 @@ export class User {
   birthday: Date;
   premium: boolean;
   userId: number;
+  notifications: Array<Notification> = [];
 
   constructor(username:string,password: string,firstName: string,lastName: string,email: string) {
     this.username = username;

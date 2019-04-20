@@ -44,5 +44,13 @@ export class SessionService {
     return sessionStorage.address;
   }
 
+  setUnreadNotifications(unread:number) {
+    sessionStorage.unreadNotifications = unread;
+  }
+
+  getUnreadNotifications():number {
+    return sessionStorage.unreadNotifications;
+  }
+
 
 }

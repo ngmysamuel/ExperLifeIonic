@@ -37,8 +37,8 @@ const routes: Routes = [
   { path: 'evaluate-experience/:id', loadChildren: './evaluate-experience/evaluate-experience.module#EvaluateExperiencePageModule' },
   { path: 'view-followers', loadChildren: './view-followers/view-followers.module#ViewFollowersPageModule' },
   { path: 'view-follows', loadChildren: './view-follows/view-follows.module#ViewFollowsPageModule' },
-  { path: 'other-profile/:id', loadChildren: './other-profile/other-profile.module#OtherProfilePageModule' }
-
+  { path: 'other-profile/:id', loadChildren: './other-profile/other-profile.module#OtherProfilePageModule' },
+  { path: 'view-notifications', loadChildren: './view-notifications/view-notifications.module#ViewNotificationsPageModule' }
 
 
 

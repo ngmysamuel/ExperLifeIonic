@@ -122,10 +122,10 @@
       </ion-col>
       <ion-col size="5">
         <ion-label *ngIf="premium">You are our valued Premium member.</ion-label>
+        <ion-label *ngIf="submitUpgradeAppeal">We have received your request to upgrade. Please wait while we process the request.</ion-label>
       </ion-col>
       <ion-col size="1">
-        <ion-button *ngIf="premium" (click)="downgrade()">Downgrade</ion-button>
-        <ion-button *ngIf="!premium" (click)="upgrade()">Upgrade</ion-button>
+        <ion-button *ngIf="!submitUpgradeAppeal && !premium" (click)="upgrade()">Upgrade</ion-button>
       </ion-col>
     </ion-row>
 
