@@ -46,6 +46,16 @@ export class AppComponent {
       title: 'View Favorite Experiences',
       url:'/view-favorite-experience',
       icon: 'star'
+    },
+    {
+      title: 'Followers',
+      url:'/view-followers',
+      icon:'contacts'
+    },
+    {
+      title: 'Follows',
+      url:'/view-follows',
+      icon:'contacts'
     }
   ];
 

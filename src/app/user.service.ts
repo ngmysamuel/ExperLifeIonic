@@ -60,7 +60,21 @@ export class UserService {
 	}
 
 	unfollow(userId: number, unfollowId:number){
-		return this.httpClient.post<any>(this.baseUrl+"/followUser?userId="+userId+"&unfollowId="+unfollowId, null, httpOptions).pipe
+		return this.httpClient.post<any>(this.baseUrl+"/unfollowUser?userId="+userId+"&unfollowId="+unfollowId, null, httpOptions).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
+
+	retrieveFollowers(userId:number){
+		return this.httpClient.get<any>(this.baseUrl+"/retrieveFollowers/"+userId).pipe
+		(
+			catchError(this.handleError)
+		)
+	}
+
+	retrieveFollows(userId:number){
+		return this.httpClient.get<any>(this.baseUrl+"/retrieveFollows/"+userId).pipe
 		(
 			catchError(this.handleError)
 		)

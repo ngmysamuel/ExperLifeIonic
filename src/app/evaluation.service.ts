@@ -54,6 +54,20 @@ export class EvaluationService {
     )
   }
 
+  retrieveEvaluationByHost(userId: number){
+    return this.httpClient.get<any>(this.baseUrl+"/retrieveAllEvalFromHost/"+userId).pipe
+    (
+      catchError(this.handleError)
+    )
+  }
+
+  retrieveEvaluationByGuest(userId: number){
+    return this.httpClient.get<any>(this.baseUrl+"/retrieveAllEvalFromGuest/"+userId).pipe
+    (
+      catchError(this.handleError)
+    )
+  }
+
   private handleError(error: HttpErrorResponse)
 	{
 		let errorMessage: string = "";

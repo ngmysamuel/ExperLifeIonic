@@ -34,7 +34,11 @@ const routes: Routes = [
   { path: 'guest-list/:id', loadChildren: './guest-list/guest-list.module#GuestListPageModule',canActivate: [AuthGuardService]  },
   { path: 'evaluate-guest/:bookingId/:guestId', loadChildren: './evaluate-guest/evaluate-guest.module#EvaluateGuestPageModule',canActivate: [AuthGuardService]  },
   { path: 'view-favorite-experience', loadChildren: './view-favorite-experience/view-favorite-experience.module#ViewFavoriteExperiencePageModule',canActivate: [AuthGuardService]  },
-  { path: 'evaluate-experience/:id', loadChildren: './evaluate-experience/evaluate-experience.module#EvaluateExperiencePageModule' }
+  { path: 'evaluate-experience/:id', loadChildren: './evaluate-experience/evaluate-experience.module#EvaluateExperiencePageModule' },
+  { path: 'view-followers', loadChildren: './view-followers/view-followers.module#ViewFollowersPageModule' },
+  { path: 'view-follows', loadChildren: './view-follows/view-follows.module#ViewFollowsPageModule' },
+  { path: 'other-profile/:id', loadChildren: './other-profile/other-profile.module#OtherProfilePageModule' }
+
 
 
 

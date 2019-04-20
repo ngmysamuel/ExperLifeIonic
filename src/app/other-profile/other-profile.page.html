@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{user?.username}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Experiences Hosted</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let exp of experiences" (click)="viewExperience(exp.experienceId)" detail>
+      <ion-label>{{exp.title}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="experiences.size == 0">
+      No experiences!
+    </ion-item>
+    <ion-list-header>
+      <ion-label>Evaluations</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let eval of evaluations">
+      <ion-label><ion-icon name="star"></ion-icon> {{eval?.score}} 
+        <span style="color:gray; font-size: small;">by {{eval?.userEvaluating.username}}</span>
+        <ion-text><p>{{eval?.remark}}</p></ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="evaluations.size == 0">
+      No evaluations!
+    </ion-item>
+  </ion-list>
+</ion-content>
