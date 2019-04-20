@@ -75,9 +75,23 @@ export class AppComponent {
   logout() {
     this.sessionService.setIsLoggedIn(false);
     this.sessionService.setCurrentUser(null);
+    this.sessionService.setUnreadNotifications(0);
     this.presentAlertLogout();
     this.router.navigate(['']);
   }
+
+  getUnreadNotifications(): number {
+    return this.sessionService.getUnreadNotifications();
+  }
+
+  viewNotifications() {
+    this.router.navigate(['/view-notifications']);
+  }
+
+
+
+
+
 
   async presentAlertLogout() {
     const alert = await this.alertController.create({

@@ -95,6 +95,19 @@ export class CreateExperiencePage implements OnInit {
     );
   }
 
+  ionViewWillLeave() {
+    console.log("ion leaving");
+    this.title = "";
+    this.category = undefined;
+    this.address = "";
+    this.type = undefined;
+    this.location = undefined;
+    this.language = undefined;
+
+    this.exp = undefined;
+    this.errorMessage = undefined;
+  }
+
   async presentLoading() {
     this.loading = await this.loadingController.create({
       message: 'Finding where you are...',

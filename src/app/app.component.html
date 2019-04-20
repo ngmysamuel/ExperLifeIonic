@@ -38,6 +38,11 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-item (click)="viewNotifications()">
+            <ion-icon name="notifications-outline" slot="start"></ion-icon>
+            <ion-label>Notifications</ion-label>
+            <ion-badge slot="end">{{getUnreadNotifications()}}</ion-badge>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>

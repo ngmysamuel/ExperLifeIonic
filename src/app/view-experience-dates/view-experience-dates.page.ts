@@ -26,13 +26,16 @@ export class ViewExperienceDatesPage implements OnInit {
       response=>{this.exp = response.experienceEntity;console.log(this.exp);},
       error=> {console.log("Error in getting details")}
     );
+   }
+
+  ngOnInit() {
+  }
+
+  ionViewWillEnter() {
     this.experienceDateService.retrieveExperienceDates(this.experienceId).subscribe(
       response=>{this.experienceDates = response.experienceDateEntities;console.log("experience dates retrieved")},
       error=>{}
     )
-   }
-
-  ngOnInit() {
   }
 
   createExperienceDate(){
@@ -70,7 +73,7 @@ export class ViewExperienceDatesPage implements OnInit {
 
   deleteExpDate(experienceDateId: number, reason: String){
     this.experienceDateService.deleteExperienceDate(experienceDateId, reason).subscribe(
-      response=>{console.log("Experience Date " + experienceDateId + " deleted!");},
+      response=>{console.log("Experience Date " + experienceDateId + " deleted!");this.router.navigate(['/view-host-experience']);},
       error=>{console.log("Fail deleting exp date");}
     );
   }

@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import {SessionService} from './session.service'
+import {SessionService} from './session.service';
 import { Booking } from "./booking";
-import{ User } from './user'
+import{ User } from './user';
 
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
