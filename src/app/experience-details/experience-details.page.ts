@@ -204,4 +204,19 @@ export class ExperienceDetailsPage implements OnInit {
     });
     toast.present();
   }
+
+  followUser(){
+    this.userService.follow(this.sessionService.getCurrentUser().userId, this.exp.host.userId).subscribe(
+      response=>{this.presentUserFollow(); console.log("Follow success");},
+      error=>{console.log("Follow failed");}
+    )
+  }
+
+  async presentUserFollow() {
+    const toast = await this.toastController.create({
+      message: 'User Followed.',
+      duration: 2000
+    });
+    toast.present();
+  }
 }

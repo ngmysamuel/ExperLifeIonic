@@ -14,7 +14,11 @@
 
 <ion-content>
   <h1 style="padding-left: 15px; margin-bottom: 5px;">{{exp?.title}}</h1>
-  <h6 style="padding-left: 15px; color:grey; margin-top: 0px;">by {{host}}</h6>
+        <ion-label style="padding-left: 15px; color:grey; margin-top: 0px;">by {{host}} </ion-label>
+        <br/>
+        <ion-button (click)="followUser()" fill="outline" size="small" color="dark" *ngIf="!(exp && isItYours())">
+          <ion-icon name="person-add" style="font-size:16px;"></ion-icon>  Follow
+        </ion-button>
   <ion-list>
     <!-- <ion-item>
       <ion-label><b>Title</b></ion-label>
